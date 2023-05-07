@@ -13,25 +13,19 @@ public class JpaMain {
         EntityTransaction tx = em.getTransaction(); // 트랜잭션 생성
         tx.begin(); // 트랜잭션 시작
 
-        /**
-         * 만드는 로직
-         */
-        Member member = new Member();
-        member.setId(1L);
-        member.setName("HelloA");
+        try {
+            Member member = new Member();
+            member.setId(2L);
+            member.setName("HelloB");
 
-        /**
-         * JPA 저장
-         * persist -> 저장 명령어
-         */
-        em.persist(member);
+            em.persist(member);
 
-        /**
-         * 커밋
-         */
-        tx.commit();
-
-        em.close();
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+        } finally {
+            em.close();
+        }
         emf.close();
     }
 }
