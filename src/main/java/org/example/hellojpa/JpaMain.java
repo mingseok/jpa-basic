@@ -14,11 +14,18 @@ public class JpaMain {
         tx.begin(); // 트랜잭션 시작
 
         try {
+            // 비영속
             Member member = new Member();
-            member.setId(2L);
-            member.setName("HelloB");
+            member.setId(100L);
+            member.setName("HelloJPA");
 
+            // 영속
             em.persist(member);
+
+            Member findMember1 = em.find(Member.class, 101L);
+            Member findMember2 = em.find(Member.class, 101L);
+
+            System.out.println("result = " + (findMember1 == findMember2));
 
             tx.commit();
         } catch (Exception e) {
