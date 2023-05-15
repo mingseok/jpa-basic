@@ -7,22 +7,26 @@ import java.util.Date;
 public class Member {
 
     @Id
-    private Long id;
+    private String id;
 
-    @Column(name = "name")
+    @Column(name = "name", columnDefinition = "varchar(100) default ‘EMPTY’")
     private String username;
 
-    private Integer age;
+    public Member() { }
 
-    @Enumerated(EnumType.STRING)
-    private RoleType roleType;
+    public String getId() {
+        return id;
+    }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;
+    public void setId(String id) {
+        this.id = id;
+    }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date lastModifiedDate;
+    public String getUsername() {
+        return username;
+    }
 
-    @Lob
-    private String description;
+    public void setUsername(String username) {
+        this.username = username;
+    }
 }
