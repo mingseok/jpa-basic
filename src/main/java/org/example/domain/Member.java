@@ -3,20 +3,17 @@ package org.example.domain;
 import javax.persistence.*;
 
 @Entity
-public class Member extends BaseEntity{
+public class Member extends BaseEntity {
 
     @Id @GeneratedValue
     private Long id;
 
     @Column(name = "USERNAME")
-    private String username;
+    private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY) //**
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
-    @OneToOne
-    @JoinColumn(name = "LOCKER_ID")
-    private Locker locker;
-
+    // 생략..
 }
