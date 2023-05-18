@@ -3,7 +3,7 @@ package org.example.domain;
 import javax.persistence.*;
 
 @Entity
-public class Member {
+public class Member extends BaseEntity{
 
     @Id @GeneratedValue
     private Long id;
