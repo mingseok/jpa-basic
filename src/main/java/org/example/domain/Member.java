@@ -11,9 +11,10 @@ public class Member extends BaseEntity {
     @Column(name = "USERNAME")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY) //**
-    @JoinColumn(name = "TEAM_ID")
-    private Team team;
+    @Embedded
+    private Period period;
 
-    // 생략..
+    @Embedded
+    private Address address;
+
 }
